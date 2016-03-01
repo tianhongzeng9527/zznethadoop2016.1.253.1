@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/zznet/src"/>
+	<classpathentry kind="src" path="/zznet/source"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/hadoop-mapreduce-examples-2.7.1"/>
+	<classpathentry exported="true" kind="lib" path="/usr/local/hadoop-2.7.1/share/hadoop/common" sourcepath="/usr/local/hadoop-2.7.1/share/hadoop/common/jdiff"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/hadoop-hdfs-2.7.1"/>
+	<classpathentry exported="true" kind="lib" path="/usr/local/hadoop-2.7.1/share/hadoop/yarn"/>
+	<classpathentry exported="true" kind="lib" path="/usr/local/hadoop-2.7.1/share/hadoop/common/lib" sourcepath="/usr/local/hadoop-2.7.1/share/hadoop/common/lib"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/zznetHadoop"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.json:json:20090211"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.apache.hadoop:hadoop-common:2.3.0"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
