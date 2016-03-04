@@ -119,6 +119,9 @@ public class UserDataInformation {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
         Date dt = df.parse(splits[0].substring(0, 8));
         reqTime = df2.format(dt);
+        if(!splits[0].substring(0, 8).equals(Constants.TIME)){
+            return;
+        }
         reqHour = splits[0].substring(8, 10);
         reqIP = splits[1];
         reqPort = splits[2];

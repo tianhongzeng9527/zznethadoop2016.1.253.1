@@ -35,6 +35,7 @@ public class Constants {
     public final static int NORMAL_CATEGORY_LENGTH = 4;
     public final static int SENSITIVE_CATEGORY_LENGTH = 3;
     public final static int URL_CATEGORY_LENGTH = 2;
+    public static String TIME = "";
     public final static Set<String> TITLE_SPLIT_SYMBOL = new HashSet<String>(){
         {
 

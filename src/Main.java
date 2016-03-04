@@ -41,6 +41,7 @@ public class Main {
 
         public void configure(JobConf job) {
             time = job.get(TIME_STRING);
+            Constants.TIME = time;
 //            calculate_word_distance_url = job.get(CALCULATE_WORD_DISTANCE_URL_STRING);
 //            category_get_url = job.get(CATEGORY_GET_URL);
 //            sensitiveWord_get_url = job.get(SENSITIVE_WORD_GET_URL);
