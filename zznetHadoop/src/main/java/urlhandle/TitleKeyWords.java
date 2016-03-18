@@ -41,6 +41,11 @@ public class TitleKeyWords {
         this.topNum = topNum;
     }
 
+    public TitleKeyWords(String html, int topNum){
+        this.html = html;
+        this.topNum = topNum;
+    }
+
 
     private void setTitle() {
 //        System.out.println(Jsoup.parse(claenHtml).select("h1").toString().replace("<h1>","").replace("</h1>",""));
@@ -50,12 +55,14 @@ public class TitleKeyWords {
     private void setClaenHtml() throws IOException {
         Readability readability;
 
-        if ((this.html != null) && (!"".equals(html)))
-            readability = new Readability(html);
-        else
-            readability = new Readability(url, timeout);
-        if (readability != null)
-            readability.init();
+//        if ((this.html != null) && (!"".equals(html)))
+//            readability = new Readability(html);
+//        else
+//            readability = new Readability(url, timeout);
+//        if (readability != null)
+//            readability.init();
+        readability = new Readability(html);
+        readability.init();
 
         claenHtml = readability.outerHtml();
     }

@@ -12,6 +12,7 @@ import tools.Constants;
 import usrhandle.Category;
 import usrhandle.SensitiveWord;
 import usrhandle.UserDataInformation;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -21,6 +22,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ *
  */
 public class Main {
 
@@ -42,16 +44,16 @@ public class Main {
         public void configure(JobConf job) {
             time = job.get(TIME_STRING);
             Constants.TIME = time;
-//            calculate_word_distance_url = job.get(CALCULATE_WORD_DISTANCE_URL_STRING);
-//            category_get_url = job.get(CATEGORY_GET_URL);
-//            sensitiveWord_get_url = job.get(SENSITIVE_WORD_GET_URL);
-            calculate_word_distance_url = "http://192.168.1.106:8080/zz_nlp/wordsDistance?word1=%s&word2=%s";
-            category_get_url = "http://192.168.1.106:8080/public_behavior/api/behavior.do";
-            sensitiveWord_get_url = "http://192.168.1.106:8080/public_behavior/api/sensitive.do";
+            calculate_word_distance_url = "http://"+job.get(CALCULATE_WORD_DISTANCE_URL_STRING)+"/zz_nlp/wordsDistance?word1=%s&word2=%s";
+            category_get_url = "http://"+job.get(CATEGORY_GET_URL)+"/public_behavior/api/behavior.do";
+            sensitiveWord_get_url = "http://"+job.get(SENSITIVE_WORD_GET_URL)+"/public_behavior/api/sensitive.do";
+//            calculate_word_distance_url = "http://192.168.1.106:8080/zz_nlp/wordsDistance?word1=%s&word2=%s";
+//            category_get_url = "http://192.168.1.106:8080/public_behavior/api/behavior.do";
+//            sensitiveWord_get_url = "http://192.168.1.106:8080/public_behavior/api/sensitive.do";
         }
 
         private void handlerRightTimeInformation(UserDataInformation userDataInformation, String line, OutputCollector<Text, IntWritable> output) throws IOException {
-            if (userDataInformation.isRightTime()) {
+//            if (userDataInformation.isRightTime()) {
                 if (!userDataInformation.isNormalMessage) {
                     output.collect(new Text(Constants.WRONG_FORMAT + line), zero);
                     return;
@@ -62,19 +64,19 @@ public class Main {
                         output.collect(new Text(Constants.UNABLE_CATEGORY + line), zero);
                         return;
                     }
-                    userDataInformation.sensitiveClassify();
-                    List<String> sensitiveId = userDataInformation.getSensitiveId();
-                    if (sensitiveId != null && sensitiveId.size() > 0) {
-                        for (String s : sensitiveId) {
-                            output.collect(new Text(userDataInformation.toString()), new IntWritable(Integer.valueOf(s)));
-                        }
-                    } else {
-                        output.collect(new Text(userDataInformation.toString()), new IntWritable(1));
-                        if (userDataInformation.getReturnType() == Constants.RETURN_TYPE_NORMAL) {
-                            output.collect(new Text(userDataInformation.getURLCategory()), new IntWritable(1));
-                        }
+//                    userDataInformation.sensitiveClassify();
+//                    List<String> sensitiveId = userDataInformation.getSensitiveId();
+//                    if (sensitiveId != null && sensitiveId.size() > 0) {
+//                        for (String s : sensitiveId) {
+//                            output.collect(new Text(userDataInformation.toString()), new IntWritable(Integer.valueOf(s)));
+//                        }
+//                    } else {
+                    output.collect(new Text(userDataInformation.toString()), new IntWritable(1));
+                    if (userDataInformation.getReturnType() == Constants.RETURN_TYPE_NORMAL) {
+                        output.collect(new Text(userDataInformation.getURLCategory()), new IntWritable(1));
+//                        }
                     }
-                }
+//                }
             }
         }
 
@@ -88,6 +90,7 @@ public class Main {
                 SensitiveWord sensitiveWord = new SensitiveWord(sensitiveWord_get_url);
                 sensitiveWord.init();
             }
+//            System.out.println(line.indexOf(time)+time);
             if (line.indexOf(time) == 0) {
                 UserDataInformation userDataInformation;
                 try {
@@ -179,9 +182,9 @@ public class Main {
         String s = df.format(dt);
         FileOutputFormat.setOutputPath(conf, new Path(args[1]));
         conf.set(TIME_STRING, s);
-//        conf.set(CALCULATE_WORD_DISTANCE_URL_STRING, args[2]);
-//        conf.set(CATEGORY_GET_URL, args[3]);
-//        conf.set(SENSITIVE_WORD_GET_URL, args[4]);
+        conf.set(CALCULATE_WORD_DISTANCE_URL_STRING, args[2]);
+        conf.set(CATEGORY_GET_URL, args[3]);
+        conf.set(SENSITIVE_WORD_GET_URL, args[4]);
         JobClient.runJob(conf);
     }
 

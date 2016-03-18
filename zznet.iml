@@ -8,45 +8,60 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="hadoop-mapreduce-examples-2.7.1" level="project" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file:///usr/local/hadoop-2.7.1/share/hadoop/common" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file:///usr/local/hadoop-2.7.1/share/hadoop/common/jdiff" />
-        </SOURCES>
-        <jarDirectory url="file:///usr/local/hadoop-2.7.1/share/hadoop/common" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" exported="" name="hadoop-hdfs-2.7.1" level="project" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="file:///usr/local/hadoop-2.7.1/share/hadoop/yarn" />
+          <root url="file://$USER_HOME$/hadoop-2.6.0-cdh5.4.8/share/hadoop/common" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file:///usr/local/hadoop-2.7.1/share/hadoop/yarn" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/hadoop-2.6.0-cdh5.4.8/share/hadoop/common" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file:///usr/local/hadoop-2.7.1/share/hadoop/common/lib" />
+          <root url="file://$USER_HOME$/hadoop-2.6.0-cdh5.4.8/share/hadoop/hdfs" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/hadoop-2.6.0-cdh5.4.8/share/hadoop/hdfs" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/hadoop-2.6.0-cdh5.4.8/share/hadoop/mapreduce" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/hadoop-2.6.0-cdh5.4.8/share/hadoop/mapreduce" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/hadoop-2.6.0-cdh5.4.8/share/hadoop/yarn" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/hadoop-2.6.0-cdh5.4.8/share/hadoop/yarn" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/hadoop-2.6.0-cdh5.4.8/share/hadoop/common/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file:///usr/local/hadoop-2.7.1/share/hadoop/common/lib" />
+          <root url="file://$USER_HOME$/hadoop-2.6.0-cdh5.4.8/share/hadoop/common/lib" />
         </SOURCES>
-        <jarDirectory url="file:///usr/local/hadoop-2.7.1/share/hadoop/common/lib" recursive="false" />
-        <jarDirectory url="file:///usr/local/hadoop-2.7.1/share/hadoop/common/lib" recursive="false" type="SOURCES" />
+        <jarDirectory url="file://$USER_HOME$/hadoop-2.6.0-cdh5.4.8/share/hadoop/common/lib" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/hadoop-2.6.0-cdh5.4.8/share/hadoop/common/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="zznetHadoop" />
     <orderEntry type="library" name="Maven: org.json:json:20090211" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-common:2.3.0" level="project" />
   </component>
 </module>
