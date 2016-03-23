@@ -44,12 +44,12 @@ public class Main {
         public void configure(JobConf job) {
             time = job.get(TIME_STRING);
             Constants.TIME = time;
-            calculate_word_distance_url = "http://"+job.get(CALCULATE_WORD_DISTANCE_URL_STRING)+"/zz_nlp/wordsDistance?word1=%s&word2=%s";
-            category_get_url = "http://"+job.get(CATEGORY_GET_URL)+"/public_behavior/api/behavior.do";
-            sensitiveWord_get_url = "http://"+job.get(SENSITIVE_WORD_GET_URL)+"/public_behavior/api/sensitive.do";
-//            calculate_word_distance_url = "http://192.168.1.106:8080/zz_nlp/wordsDistance?word1=%s&word2=%s";
-//            category_get_url = "http://192.168.1.106:8080/public_behavior/api/behavior.do";
-//            sensitiveWord_get_url = "http://192.168.1.106:8080/public_behavior/api/sensitive.do";
+//            calculate_word_distance_url = "http://"+job.get(CALCULATE_WORD_DISTANCE_URL_STRING)+"/zz_nlp/wordsDistance?word1=%s&word2=%s";
+//            category_get_url = "http://"+job.get(CATEGORY_GET_URL)+"/zimo/api/behaviorCategory";
+//            sensitiveWord_get_url = "http://"+job.get(SENSITIVE_WORD_GET_URL)+"/zimo/api/sensitiveWords";
+            calculate_word_distance_url = "http://192.168.1.106:8080/zz_nlp/wordsDistance?word1=%s&word2=%s";
+            category_get_url = "http://192.168.1.106:8080/public_behavior/api/behavior.do";
+            sensitiveWord_get_url = "http://192.168.1.106:8080/public_behavior/api/sensitive.do";
         }
 
         private void handlerRightTimeInformation(UserDataInformation userDataInformation, String line, OutputCollector<Text, IntWritable> output) throws IOException {
@@ -94,6 +94,7 @@ public class Main {
             if (line.indexOf(time) == 0) {
                 UserDataInformation userDataInformation;
                 try {
+                    System.out.println(line);
                     userDataInformation = new UserDataInformation(line, calculate_word_distance_url);
                 } catch (Exception e) {
                     output.collect(new Text(Constants.PROGRAM_EXCEPTION + line), zero);
@@ -162,8 +163,8 @@ public class Main {
         conf.setMapperClass(Map.class);
         conf.setCombinerClass(Reduce.class);
         conf.setReducerClass(Reduce.class);
-        conf.setInputFormat(CombineTextInputFormat.class);
-//        conf.setInputFormat(TextInputFormat.class);
+//        conf.setInputFormat(CombineTextInputFormat.class);
+        conf.setInputFormat(TextInputFormat.class);
         conf.setOutputFormat(MyMultipleOutputFormat.class);
         conf.set("mapred.textoutputformat.separator", Constants.SEPARATOR);
         conf.set("mapreduce.input.fileinputformat.input.dir.recursive", String.valueOf(true));

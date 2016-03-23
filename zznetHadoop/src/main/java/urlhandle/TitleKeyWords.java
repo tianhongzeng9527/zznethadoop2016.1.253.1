@@ -55,14 +55,14 @@ public class TitleKeyWords {
     private void setClaenHtml() throws IOException {
         Readability readability;
 
-//        if ((this.html != null) && (!"".equals(html)))
-//            readability = new Readability(html);
-//        else
-//            readability = new Readability(url, timeout);
-//        if (readability != null)
-//            readability.init();
-        readability = new Readability(html);
-        readability.init();
+        if ((this.html != null) && (!"".equals(html)))
+            readability = new Readability(html);
+        else
+            readability = new Readability(url, timeout);
+        if (readability != null)
+            readability.init();
+//        readability = new Readability(html);
+//        readability.init();
 
         claenHtml = readability.outerHtml();
     }
@@ -204,6 +204,7 @@ public class TitleKeyWords {
             isInitDictionary = false;
             initDictionary();
         }
+
         setClaenHtml();
         setTitle();
         setContent();
